@@ -2,13 +2,12 @@ package utils
 
 //Combinatoria retorna una matriz con.
 //Todas las posibles combinaciones de longitud a.
-func Combinatoria(a int) [][]int {
-	return combinatoriaArr(make([]int, a))
-}
-
-func combinatoriaArr(numero []int) [][]int {
+func Combinatoria(numero int) [][]int {
 	var arr [][]int
-	if len(numero) == 2 {
+	if numero < 2 {
+		return [][]int{}
+	}
+	if numero == 2 {
 		for i := 0; i < 10; i++ {
 			for j := 0; j < 10; j++ {
 				if i != j {
@@ -19,7 +18,7 @@ func combinatoriaArr(numero []int) [][]int {
 		return arr
 	}
 	agregar := false
-	a := combinatoriaArr(numero[1:])
+	a := Combinatoria(numero - 1)
 	for i := 0; i < 10; i++ {
 		for j := 0; j < len(a); j++ {
 			for k := 0; k < len(a[j]); k++ {
