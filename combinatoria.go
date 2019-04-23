@@ -1,36 +1,36 @@
 package utils
 
+var elem [10]int
+var combinatoria [][]int
+
+func comb(act []int, n int, r int) {
+
+	if n == 0 {
+		combinatoria = append(combinatoria, act)
+	} else {
+		for i := 0; i < r; i++ {
+			if !contains(act, elem[i]) { // Controla que no haya repeticiones
+				comb(append(act, elem[i]), n-1, r)
+			}
+		}
+	}
+	return
+}
+
+func contains(container []int, elemento int) bool {
+	for _, v := range container {
+		if v == elemento {
+			return true
+		}
+	}
+	return false
+}
+
 //Combinatoria retorna una matriz con.
 //Todas las posibles combinaciones de longitud a.
-func Combinatoria(numero int) [][]int {
-	var arr [][]int
-	if numero < 2 {
-		return [][]int{}
-	}
-	if numero == 2 {
-		for i := 0; i < 10; i++ {
-			for j := 0; j < 10; j++ {
-				if i != j {
-					arr = append(arr, []int{i, j})
-				}
-			}
-		}
-		return arr
-	}
-	agregar := false
-	a := Combinatoria(numero - 1)
-	for i := 0; i < 10; i++ {
-		for j := 0; j < len(a); j++ {
-			for k := 0; k < len(a[j]); k++ {
-				if i == a[j][k] {
-					agregar = false
-				}
-			}
-			if agregar {
-				arr = append(arr, append(a[j], i))
-			}
-			agregar = true
-		}
-	}
-	return arr
+func Combinatoria(tamaño int) [][]int {
+	elem = [10]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	var act []int
+	comb(act, tamaño, len(elem))
+	return combinatoria
 }
