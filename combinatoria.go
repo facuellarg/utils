@@ -5,15 +5,15 @@ var combinatoria [][]int
 
 func comb(act []int, n int, r int) {
 	if n == 0 {
-
+		aux := make([]int, len(act))
+		copy(aux, act)
 		combinatoria = append(combinatoria, act)
 
 	} else {
-		aux := make([]int, len(act))
-		copy(aux, act)
+
 		for i := 0; i < r; i++ {
-			if !contains(aux, elem[i]) {
-				comb(append(aux, elem[i]), n-1, r)
+			if !contains(act, elem[i]) {
+				comb(append(act, elem[i]), n-1, r)
 			}
 		}
 	}
