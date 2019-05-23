@@ -29,12 +29,15 @@ func contains(container []string, elemento string) bool {
 	return false
 }
 
-//Combinatoria retorna una matriz con.
-//Todas las posibles combinaciones de longitud a.
+//Combinatoria retorna una matriz con
+//Todas las posibles combinaciones de longitud a
+//Basado en el arreglo elementos
 func Combinatoria(elementos []string, tamaño int) [][]string {
 	elem = elementos
 	var act []string
-
+	if tamaño > len(elementos) {
+		return nil
+	}
 	comb(act, tamaño, len(elem))
 	return combinatoria
 }
