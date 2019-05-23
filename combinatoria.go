@@ -1,11 +1,11 @@
 package utils
 
-var elem [10]int
-var combinatoria [][]int
+var elem []string
+var combinatoria [][]string
 
-func comb(act []int, n int, r int) {
+func comb(act []string, n int, r int) {
 	if n == 0 {
-		aux := make([]int, len(act))
+		aux := make([]string, len(act))
 		copy(aux, act)
 		combinatoria = append(combinatoria, act)
 
@@ -20,7 +20,7 @@ func comb(act []int, n int, r int) {
 	return
 }
 
-func contains(container []int, elemento int) bool {
+func contains(container []string, elemento string) bool {
 	for _, v := range container {
 		if v == elemento {
 			return true
@@ -31,9 +31,9 @@ func contains(container []int, elemento int) bool {
 
 //Combinatoria retorna una matriz con.
 //Todas las posibles combinaciones de longitud a.
-func Combinatoria(tamaño int) [][]int {
-	elem = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
-	var act []int
+func Combinatoria(elementos []string, tamaño int) [][]string {
+	elem = elementos
+	var act []string
 
 	comb(act, tamaño, len(elem))
 	return combinatoria
