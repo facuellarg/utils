@@ -1,4 +1,4 @@
-package utils
+package statistic
 
 var elem []string
 var combinatoria [][]string
@@ -17,7 +17,6 @@ func comb(act []string, n int, r int) {
 			}
 		}
 	}
-	return
 }
 
 func contains(container []string, elemento string) bool {
